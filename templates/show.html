@@ -1,0 +1,23 @@
+{% if items != 'error' %}
+<table border="1" xmlns="http://www.w3.org/1999/html">
+<tr>
+<th>thing</th>
+<th>level</th>
+<th>取消</th>
+</tr>
+{% for item in items %}
+<tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    <td><form method="post" id="Stopform">
+        <button type="submit" name="ok" value="{{ item[0] }}">完成</button>
+        <button type="submit" name="stop" value="{{ item[0] }}">取消</button>
+    </form></td>
+</tr>
+    {% endfor %}
+</table>
+<a href='/add_to_do'>添加to do list</a>
+{% else %}
+<a href='/add_to_do'>添加to do list</a>
+{% endif %}
+

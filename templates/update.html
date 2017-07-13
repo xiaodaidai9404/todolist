@@ -1,0 +1,22 @@
+<html>
+   <head>
+      <title>to do list</title>
+   </head>
+<form method="post">
+	<div class="form-group">
+        <lable>添加你需要做的事</lable>
+        <input type=text name=thing  placeholder='{{ item }}'></p>
+	</div>
+    <div class="form-group">
+    <lable class="control-label">选择这件事的重要程度</lable>
+    <select name='level' style="width:150px" >
+        <option value="紧急">紧急</option>
+        <option value="重要">重要</option>
+        <option value="普通">普通</option>
+    </select>
+    </div>
+    <button type="submit" name='submit' value="Create Todo" class="btn btn-success">添加</button>
+    <button type="submit" name='submit' value="recall" class="btn btn-warning">取消</button>
+</form>
+</div>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>dolist add page</title>
+	<link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>.black_overlay{  display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  }  .white_content {  display: none;  position: absolute;  top: 25%;  left: 25%;  width: 50%;  height: 50%;  padding: 16px;  border: 16px solid black;  background-color: white;  z-index:1002;  overflow: auto;  }  </style>
+</head>
+<body>
+
+
+<form method="post">
+	<div class="form-group">
+        <p>添加你需要做的事</p>
+        <p><input type=text name=thing  placeholder='请输入今天要做的事'></p>
+	</div>
+    <p>选择这件事的重要程度</p>
+    <p><select name='level' class="form-control">
+                <option value="紧急">紧急</option>
+                <option value="重要">重要</option>
+                <option value="普通">普通</option>
+    </select></p>
+    <p>点击添加事件</p>
+    <p><button type="submit" name='submit' value="Create Todo" class="btn btn-default">添加</button></p>
+</form>
+<a href='/'>跳转至展示页面</a>
+</body>
+</html>

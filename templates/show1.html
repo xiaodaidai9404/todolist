@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>to do list</title>
+       <!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- 可选的Bootstrap主题文件（一般不使用） -->
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       <style>.black_overlay{  display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  }  .white_content {  display: none;  position: absolute;  top: 25%;  left: 25%;  width: 50%;  height: 50%;  padding: 16px;  border: 16px solid black;  background-color: white;  z-index:1002;  overflow: auto</style>
+   </head>
+   <p><caption>to do list</caption></p>
+    <button href="javascript:void(0)" class="btn btn-danger" onclick="document.getElementById('add').style.display='block';">添加</button>
+<table class="table table-striped">
+   <thead>
+    <tr>
+    <th>thing</th>
+    <th>level</th>
+    <th>statu</th>
+    <th>create date</th>
+    <th>action</th>
+    </tr>
+   </thead>
+   <tbody>
+    {% for item in items %}
+    <tr class="success">
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+        {% if (item[2]) == '1' %}
+            <td>已解决</td>
+        {% else %}
+            <td><a style="color:red;">待解决</a></td>
+        {% endif %}
+    <td>{{ item[3] }}</td>
+    <td><form method="post" id="Stopform">
+        <button class="btn btn-success" type="submit" name="ok" value="{{ item[0] }}">完成</button>
+        <button class="btn btn-warning" type="submit" name="stop" value="{{ item[0] }}">取消</button>
+        <button class="btn btn-primary" type="submit" name="update" value="{{ item }}">修改</button>
+    </form></td>
+    </tr>
+    {% endfor %}
+   </tbody>
+</table>
+<div id="add" class="white_content">
+<form method="post">
+	<div class="form-group">
+        <lable>添加你需要做的事</lable>
+        <input type=text name=thing  placeholder='请输入今天要做的事'></p>
+	</div>
+    <div class="form-group">
+    <lable class="control-label">选择这件事的重要程度</lable>
+    <select name='level' style="width:150px">
+        <option value="紧急">紧急</option>
+        <option value="重要">重要</option>
+        <option value="普通">普通</option>
+    </select>
+    </div>
+    <button type="submit" name='submit' value="Create Todo" class="btn btn-success">添加</button>
+    <button type="submit" name='submit' value="recall" class="btn btn-warning">取消</button>
+</form>
+</div>
+</html>
