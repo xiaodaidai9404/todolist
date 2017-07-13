@@ -32,19 +32,6 @@ def Time():
     yes_time = now_time + datetime.timedelta(days=-7)
     return now_time.strftime('%Y-%m-%d'),yes_time.strftime('%Y-%m-%d')
 
-#addtodo页面，添加需要做的事，从表单中获取item_name需要做的事，item_level等级，nowtime＝当前时间，然后插入到数据库
-#@app.route('/add_to_do',methods=['GET','POST'])
-#def index():
-#    if request.method == 'POST':
-#        if request.form['submit'] == 'Create Todo':
-#            item_name = request.form['thing']
-#            item_level = request.form['level']
-#            nowtime = Time()[0]
-#            action_db.insert(item_name,item_level,nowtime)
-#            return render_template('test.html')
-#    return render_template('test.html')
-
-
 #展示页面，get页面直接返回页面，post的话点击stop的话就删除这条记录再返回页面，ok的话就改变事情的状态然后再返回页面
 @app.route('/',methods=['GET','POST'])
 def show():
@@ -75,8 +62,6 @@ def show():
             item0 = action_db.select0(nowtime[0], nowtime[1])
             item1 = action_db.select1(nowtime[0], nowtime[1])
             items = format(item0, item1)
-        elif request.form['submit'] == 'Update Todo':
-            print "ok"
         return render_template('show1.html', items=items)
     return render_template('show1.html',items=items)
 
@@ -116,14 +101,11 @@ def cmp_ignore_statu(s1, s2):
         return 1
 
 def format(item0,item1):
-    #item1 = sorted(item, cmp=lambda x, y: cmp_ignore_case(x[1], y[1]))
-    #item1.reverse()
-    #items = sorted(item1, cmp=lambda x, y: cmp_ignore_statu(x[2], y[2]))
-    #return items
     item_no = sorted(item0, cmp=lambda x, y: cmp_ignore_case(x[1], y[1]))
     item_yes = sorted(item1, cmp=lambda x, y: cmp_ignore_case(x[1], y[1]))
     items = item_no + item_yes
     return items
+
 @app.route('/list/<comments>')
 def list(comments):
     return render_template('list.html',comments=comments)
